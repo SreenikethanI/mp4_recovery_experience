@@ -90,7 +90,7 @@ image was found. Check out the folder for a README :)
 
 # Analysis
 
-1. Analyzing the video:
+1. Analyzing the script's output:
 
     Here's the graph:
     - ↔️ X axis: video timestamp. 1 unit = 1 second
@@ -106,23 +106,25 @@ image was found. Check out the folder for a README :)
     1 minute. This was the silent portion where the <b>person had left the
     meeting due to poor internet</b>.
 
-    We can also notice how the video is a bit sped-up, as it is NOT parallel
-    to the black line, which confirms the suspicion from earlier.
+    We can also notice how it is NOT parallel to the black line, which confirms
+    the suspicion from earlier that the video is sped-up.
 
     This is useful data! This effectively tell me "what timestamp of this
-    sped-up video is supposed to be occuring at what clock time"!
+    sped-up video is supposed to be occuring at what clock time"! This data is
+    available in the [gmeet_timestamps.csv](gmeet_timestamps.csv) file.
 
-2. 🎙️ Analyzing the audio:
+2. Analyzing the recovered audio:
 
-    It can be noted that the audio is stereo. This is a benefit, since the
-    actual mic voices are in mono, but the Google Meet's "join" sound effect is
+    It can be noted that the audio is stereo, but the human voices are still in
+    mono. This is a benefit, since the Google Meet's "join" sound effect is
     stereo.
 
-    So, simply inverting a channel and mixing with the other will extract these
-    sound effects, which can be used to visually compare with the video. This
-    can be done in [Audacity](https://www.audacityteam.org/).
+    I tried to simply invert a channel and mixing with the other, and it turns
+    out that it will extract the Google Meet's "join" sound effects, since that
+    sound effect is in stereo. This can be used to visually align with the
+    video. [Audacity](https://www.audacityteam.org/) is the best tool for this.
 
-    This didn't really help, though. Fun to try it out.
+    This didn't really help much, though. Fun, regardless!
 
 ---
 
@@ -138,8 +140,8 @@ This effectively stretches that sped-up portion to be of "normal" speed!
 I had to do some minor audio stretching too, since it seems that the silent
 portion's audio has been completely discarded, not silenced.
 
-The end result? A decent video with slightly out-of-sync audio. Which is quite
-respectable!
+The end result? A decent-but-accurate video, with slightly out-of-sync audio.
+Which is quite respectable!
 
 ---
 
