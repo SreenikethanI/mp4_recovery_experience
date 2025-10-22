@@ -13,7 +13,7 @@ This repo documents my experience in attempting to recover this MP4 file.
 
 ---
 
-# 👉 **Attempt 1: `recover_mp4.exe`**
+# 👉 **Part 1: `recover_mp4.exe`**
 
 I asked him to record a dummy video with the **same** video recorder (Game Bar),
 and I used [recover_mp4.exe](https://slydiman.me/eng/mmedia/recover_mp4.htm)
@@ -58,11 +58,12 @@ ffmpeg -i donor.mp4 -vf setpts=print(PTS) -f null - > donor_pts.txt
 > 10 FPS video, the PTS values would be $0$, $3000$, $6000$, $9000$, $12000$, ...
 
 Here's the graph:
-- ↔️ X axis = Frame number. 1 unit = 1 frame
-- ↕️ Y axis = Timestamp. 30000 units = 1 second
-- 📈 https://www.desmos.com/calculator/j1dswlh5ji
 - Black line = frame timings
-- Blue line = frame rate (moving average)
+- Blue line = frame rate (moving average of last 60 PTS values)
+- ↔️ X axis = Frame number. 1 unit = 1 frame
+- ↕️ Y axis (black line) = Timestamp. 1 unit = 1 second
+- ↕️ Y axis (blue line) = Frame rate. 1 unit = 1 FPS
+- 📈 https://www.desmos.com/calculator/j1dswlh5ji
 
 <img src="readme_assets/graph1.svg" width="500">
 
@@ -73,7 +74,7 @@ i.e. the FPS in the original recording would be variable.
 
 ---
 
-# 👉 **Attempt 2: Estimate PTS**
+# 👉 **Part 2: Estimate PTS**
 
 The goal is to now somehow **estimate** the original PTS values prior to
 corruption, which is impossible. So what I'm gonna do is, I can use the
@@ -128,7 +129,7 @@ image was found. Check out the folder for a README :)
 
 ---
 
-# 👉 **Attempt 3: Apply PTS values!**
+# 👉 **Part 3: Apply PTS values!**
 
 [Kdenlive](https://kdenlive.org/) has a [Time Remapping](https://docs.kdenlive.org/en/effects_and_filters.html#time-remapping)
 feature. I can use the data obtained in the previous section for time-remapping,
