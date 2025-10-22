@@ -1,0 +1,11 @@
+# Media files
+**/*.mp4
+**/*.mkv
+**/*.flac
+**/*.kdenlive
+
+# Intermediate files
+**/*.aac
+**/*.h264
+**/*.h264.ts
+**/*.hdr
